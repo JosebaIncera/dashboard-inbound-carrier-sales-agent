@@ -1,0 +1,13 @@
+{
+    "name": "update-metrics",
+    "version": "1.0.0",
+    "description": "Supabase Edge Function to call backend update_metrics endpoint",
+    "main": "index.ts",
+    "scripts": {
+        "deploy": "supabase functions deploy update-metrics",
+        "test": "supabase functions invoke update-metrics"
+    },
+    "dependencies": {
+        "https://deno.land/std@0.168.0/http/server.ts": "^0.168.0"
+    }
+}
