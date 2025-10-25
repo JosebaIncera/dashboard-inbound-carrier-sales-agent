@@ -1,4 +1,4 @@
-# HappyRobot Inbound Carrier Sales Agent Dashboard
+# Inbound Carrier Sales Agent Dashboard
 
 A comprehensive analytics dashboard for tracking and visualizing inbound carrier sales agent performance metrics. Built with Next.js, and Supabase for real-time data visualization and analysis.
 
