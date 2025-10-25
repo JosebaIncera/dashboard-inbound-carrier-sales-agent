@@ -53,4 +53,5 @@ EXPOSE 8080
 ENV PORT 8080
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
+# CMD ["node", "server.js"]
