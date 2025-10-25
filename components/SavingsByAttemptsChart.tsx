@@ -13,6 +13,10 @@ export default function SavingsByAttemptsChart({ metrics }: SavingsByAttemptsCha
 
     metrics.forEach((metric) => {
         const attempts = metric.negotiation_attempts;
+        // Skip negotiations with 0 attempts
+        if (attempts === 0) {
+            return;
+        }
         if (!savingsByAttempts[attempts]) {
             savingsByAttempts[attempts] = [];
         }
