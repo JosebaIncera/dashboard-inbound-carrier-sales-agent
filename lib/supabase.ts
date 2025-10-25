@@ -1,20 +1,26 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// This code runs at RUNTIME, not build time
-export const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
-);
 // Add initialization logging
 console.log('=== Supabase Initialization ===');
 console.log('Environment:', process.env.NODE_ENV);
 console.log('Supabase URL:', supabaseUrl ? `${supabaseUrl.substring(0, 30)}...` : 'NOT SET');
 console.log('Supabase Key:', supabaseAnonKey ? `${supabaseAnonKey.substring(0, 20)}...` : 'NOT SET');
-console.log('Using fallback:', !supabaseUrl || !supabaseAnonKey);
 console.log('==============================');
+
+if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('⚠️ CRITICAL: Supabase credentials are missing!');
+    if (process.env.NODE_ENV === 'production') {
+        throw new Error('Supabase credentials must be set in production');
+    }
+}
+
+export const supabase = createClient(
+    supabaseUrl || 'https://placeholder.supabase.co',
+    supabaseAnonKey || 'placeholder-key'
+);
 
 
 export interface Metric {
