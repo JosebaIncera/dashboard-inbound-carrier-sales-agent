@@ -47,9 +47,10 @@ RUN mkdir -p ./public
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 8080
 
-ENV PORT 3000
+# Use the port that Railway provides
+ENV PORT 8080
 ENV HOSTNAME "0.0.0.0"
 
 CMD ["node", "server.js"]
